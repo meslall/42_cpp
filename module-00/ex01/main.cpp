@@ -6,7 +6,7 @@
 /*   By: omeslall <omeslall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 18:03:10 by omeslall          #+#    #+#             */
-/*   Updated: 2022/09/29 17:26:22 by omeslall         ###   ########.fr       */
+/*   Updated: 2022/09/30 19:49:06 by omeslall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ void    PhoneBook::add_contact()
 	if(contact_count >= 7)
 		contact_count--;
 	std::cout << "First name: ";
-	std::cin >> input;
+	getline(std::cin , input);
 	contacts[contact_count].set_first_name(input);
 	std::cout << "Last name: ";
-	std::cin >> input;
+	std::getline(std::cin , input);
 	contacts[contact_count].set_last_name(input);
 	std::cout << "Phone number: ";
-	std::cin >> input;
+	std::getline(std::cin , input);
 	if(!std::all_of(input.begin(), input.end(), ::isdigit))
 	{
 		std::cout << "Phone number must be a number" << std::endl;
@@ -82,9 +82,55 @@ void    PhoneBook::add_contact()
 	}
 	contacts[contact_count].set_phone_number(input);
 	std::cout << "Darkest secret: ";
-	std::cin >> input;
+	std::getline(std::cin , input);
 	contacts[contact_count].set_darkest_secret(input);
 	contact_count++;
+}
+
+void    PhoneBook::search_contact()
+{
+	std::string input;
+	int index;
+	if(contact_count == 0)
+	{
+		std::cout << "No contacts to search" << std::endl;
+		return ;
+	}
+	std::cout << "     Index|First Name| Last Name|  Phone Number" << std::endl;
+	for(int i = 0; i < contact_count; i++)
+	{
+		std::cout << "         " << i << "|";
+		if(contacts[i].get_first_name().length() > 10)
+			std::cout << contacts[i].get_first_name().substr(0, 9) << "." << "|";
+		else
+			std::cout << std::setw(10) << contacts[i].get_first_name() << "|";
+		if(contacts[i].get_last_name().length() > 10)
+			std::cout << contacts[i].get_last_name().substr(0, 9) << "." << "|";
+		else
+			std::cout << std::setw(10) << contacts[i].get_last_name() << "|";
+		if(contacts[i].get_phone_number().length() > 10)
+			std::cout << contacts[i].get_phone_number().substr(0, 9) << "." << "|";
+		else
+			std::cout << std::setw(10) << contacts[i].get_phone_number() << "|";
+		std::cout << std::endl;
+	}
+	std::cout << "Enter index: ";
+	std::getline(std::cin , input);
+	if(!std::all_of(input.begin(), input.end(), ::isdigit))
+	{
+		std::cout << "Index must be a number" << std::endl;
+		exit(0);
+	}
+	index = std::stoi(input);
+	if(index < 0 || index >= contact_count)
+	{
+		std::cout << "Index out of range" << std::endl;
+		return ;
+	}
+	std::cout << "First name: " << contacts[index].get_first_name() << std::endl;
+	std::cout << "Last name: " << contacts[index].get_last_name() << std::endl;
+	std::cout << "Phone number: " << contacts[index].get_phone_number() << std::endl;
+	std::cout << "Darkest secret: " << contacts[index].get_darkest_secret() << std::endl;
 }
 
 int main()
@@ -95,7 +141,7 @@ int main()
     {
         std::string input;
         std::cout << "Enter a command: ";
-        std::cin >> input;
+        getline(std::cin , input);
         if (input.empty())
         {
             std::clearerr(stdin);
@@ -107,24 +153,12 @@ int main()
         else if (input == "EXIT")
             break;
         else if (input == "ADD")
-        {
 			phonebook.add_contact();
-			
-        }
-		// else if (input == "SEARCH")
-		// {
-		// 	std::cout << std::setw(10) << "index" << "|";
-		// 	std::cout << std::setw(10) << "first name" << "|";
-		// 	std::cout << std::setw(10) << "last name" << "|";
-		// 	std::cout << std::setw(10) << "phone number" << std::endl;
-		// 	std::cout << std::setw(10) << "0" << "|";
-		// 	std::cout << std::setw(10) << contact.get_first_name() << "|";
-		// 	std::cout << std::setw(10) << contact.get_last_name() << "|";
-		// 	std::cout << std::setw(10) << contact.get_phone_number() << std::endl;
-		// 	std::string index;
-		// 	std::cout << "Enter index: ";
-		// 	std::cin >> index;
-		// }
+		else if (input == "SEARCH")
+			phonebook.search_contact();
+		else
+			std::cout << "Invalid command" << std::endl;
+			//missing nickname
 	}
 	return (0);
 }
