@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omeslall <omeslall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:35:35 by omeslall          #+#    #+#             */
-/*   Updated: 2022/11/08 16:48:01 by omeslall         ###   ########.fr       */
+/*   Updated: 2022/11/08 23:24:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,9 @@ Weapon::~Weapon(){}
 std::string	Weapon::getType()
 {
 	return(this->type);
+}
+
+void	Weapon::setType(std::string	tp)
+{
+	this->type = tp;
 }
