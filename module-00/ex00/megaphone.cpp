@@ -6,7 +6,7 @@
 /*   By: omeslall <omeslall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 15:12:20 by omeslall          #+#    #+#             */
-/*   Updated: 2022/09/25 17:24:11 by omeslall         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:58:34 by omeslall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int ac, char **av)
                 str[j] = str[j] - 32;
             j++;
         }
-        std::cout << str << " ";
+        std::cout << str;
         i++;
     }
     std::cout << std::endl;
