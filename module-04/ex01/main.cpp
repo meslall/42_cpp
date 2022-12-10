@@ -12,6 +12,7 @@ int	main( void )
 	meta->makeSound();
 	cat->makeSound();
 	dog->makeSound();
+	
 	delete meta;
 	delete cat;
 	delete dog;
