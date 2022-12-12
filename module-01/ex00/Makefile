@@ -1,6 +1,6 @@
 NAME = Zombie
 
-SRC = main.cpp
+SRC = main.cpp  newzombie.cpp  randomChump.cpp  zombie.cpp
 		
 CC = @c++ -std=c++98
 
