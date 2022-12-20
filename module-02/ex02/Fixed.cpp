@@ -56,9 +56,15 @@ Fixed Fixed::operator+(const Fixed &other)
 	return(sum);
 }
 
+Fixed Fixed::operator-(const Fixed &other)
+{
+	Fixed sum;
+	sum.setRawBits(this->getRawBits() - other.getRawBits());
+	return(sum);
+}
+
 Fixed Fixed::operator*(const Fixed &other)
 {
-	std::cout << "** " << this->toFloat() << "|" << other.toFloat() << std::endl;
 	float f = this->toFloat() * other.toFloat();
 	Fixed sum(f);
 	return(sum);
@@ -77,11 +83,23 @@ Fixed	&Fixed::operator++()
 	return (*this = *this + tmp);
 }
 
+Fixed	&Fixed::operator--()
+{
+	Fixed tmp(0.00390625f);
+	return (*this = *this - tmp);
+}
+
 Fixed	Fixed::operator++(int)
 {
 	Fixed tmp(*this);
-
 	*this = *this + Fixed(0.00390625f);
+	return (tmp);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed tmp(*this);
+	*this = *this - Fixed(0.00390625f);
 	return (tmp);
 }
 
@@ -93,10 +111,7 @@ std::ostream &operator<<(std::ostream& os,const Fixed& dt)
 //============================================================
 bool	Fixed::operator<(const Fixed &other)
 {
-	if(this->_fixed_point_value < other._fixed_point_value)
-		return(true);
-	else
-		return(false);
+	return(this->_fixed_point_value < other._fixed_point_value ? true : false);
 }
 
 bool    Fixed::operator==(const Fixed &other)
