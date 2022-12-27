@@ -5,6 +5,9 @@
 
 class Fixed
 {
+private:
+	int					_fixed_point_value;
+	static const int	_number_of_fractional_bits = 8;
 
 public:
 
@@ -16,11 +19,6 @@ public:
 
 	int		getRawBits( void ) const;
 	void	setRawBits( const int raw );
-private:
-
-	int					_fixed_point_value;
-
-	static const int	_number_of_fractional_bits = 8;
 };
 
 #endif

@@ -6,6 +6,9 @@
 
 class Fixed
 {
+private:
+	int					_fixed_point_value;
+	static const int	_number_of_fractional_bits = 8;
 
 public:
 
@@ -21,10 +24,6 @@ public:
 	void	setRawBits( const int raw );
 
 	Fixed	&operator=( const Fixed &other);
-private:
-
-	int					_fixed_point_value;
-	static const int	_number_of_fractional_bits = 8;
 };
 
 std::ostream &operator << (std::ostream &os,Fixed const & dt);

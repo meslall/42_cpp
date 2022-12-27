@@ -44,3 +44,20 @@ void ScavTrap::guardGate()
 {
 	std::cout << "ScavTrap " << this->getName() << " has entered in Gate keeper mode" << std::endl;
 }
+
+void ScavTrap::attack(std::string const &target)
+{
+	if (this->getHitPoints() == 0)
+	{
+		std::cout << "ScavTrap " << this->getName() << " is dead and can't attack" << std::endl;
+		return;
+	}
+	if (this->getEnergyPoints() > 0)
+	{
+		std::cout << "ScavTrap " << this->getName() << " attacks " << target << ", causing " << this->getAttackDamage() << " points of damage!" << std::endl;
+		this->setEnergyPoints(this->getEnergyPoints() - 1);
+		return;
+	}
+	std::cout << "ScavTrap " << this->getName() << " doesn't have enough energy to attack" << std::endl;
+	return;
+}

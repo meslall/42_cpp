@@ -109,32 +109,32 @@ std::ostream &operator<<(std::ostream& os,const Fixed& dt)
 	return os;
 }
 //============================================================
-bool	Fixed::operator<(const Fixed &other)
+bool	Fixed::operator<(const Fixed &other) const
 {
 	return(this->_fixed_point_value < other._fixed_point_value ? true : false);
 }
 
-bool    Fixed::operator==(const Fixed &other)
+bool    Fixed::operator==(const Fixed &other) const
 {
 	return(this->_fixed_point_value == other._fixed_point_value ? true : false);
 }
 
-bool    Fixed::operator!=(const Fixed &other)
+bool    Fixed::operator!=(const Fixed &other) const
 {
 	return(this->_fixed_point_value != other._fixed_point_value ? true : false);
 }
 
-bool	Fixed::operator<=(const Fixed &other)
+bool	Fixed::operator<=(const Fixed &other) const
 {
 	return(this->_fixed_point_value <= other._fixed_point_value ? true : false);
 }
 
-bool	Fixed::operator>=(const Fixed &other)
+bool	Fixed::operator>=(const Fixed &other) const
 {
 	return(this->_fixed_point_value >= other._fixed_point_value ? true : false);
 }
 
-bool	Fixed::operator>(const Fixed &other)
+bool	Fixed::operator>(const Fixed &other) const
 {
 	return (this->_fixed_point_value > other._fixed_point_value ? true : false);
 }
@@ -152,3 +152,18 @@ const Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
 		return b;
 	return a;
 }
+
+Fixed	&Fixed::max(Fixed &a, Fixed &b)
+{
+	if(a.getRawBits() > b.getRawBits())
+		return a;
+	return b;
+}
+
+Fixed	&Fixed::min(Fixed &a, Fixed &b)
+{
+	if(a.getRawBits() > b.getRawBits())
+		return b;
+	return a;
+}
+//============================================================

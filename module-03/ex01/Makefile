@@ -1,6 +1,6 @@
-NAME = Fixed
+NAME = ClapTrap
 
-SRC = Fixed.cpp main.cpp
+SRC = ClapTrap.cpp ScavTrap.cpp main.cpp
 		
 CC = @c++ -std=c++98
 
@@ -17,14 +17,14 @@ OBJS	= $(SRC:.cpp=.o)
 	
 $(NAME):  $(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-			@echo "\033[0;32m®Fixed CREATED 🐲\033[0m"
+			@echo "\033[0;32m®ClapTrap CREATED 🐲\033[0m"
 
 clean:
 			$(RM) $(OBJS)
-			@echo "\033[0;31m®Fixed objects DELETED 🗑"
+			@echo "\033[0;31m®ClapTrap objects DELETED 🗑"
 
 fclean:
 			$(RM) $(NAME) $(OBJS)
-			@echo "\033[0;31m®Fixed DELETED 🗑"
+			@echo "\033[0;31m®ClapTrap DELETED 🗑"
 			
 re:			fclean all 

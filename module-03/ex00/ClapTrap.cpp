@@ -44,30 +44,52 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(std::string const &target)
 {
-    if(this->energyPoints >= 1)
+    if(this->energyPoints >= 1  && this->hitPoints > 0)
     {
         std::cout << "ClapTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " points of damage!" << std::endl;
         this->energyPoints -= 1;
         return;
     }
-    std::cout << "ClapTrap " << this->name << " doesn't have enough energy to attack" << std::endl;
-    return;
+	if(this->hitPoints == 0)
+		std::cout << "ClapTrap " << this->name << " doesn't have enough hit points to attack  " << std::endl;
+	else
+    	std::cout << "ClapTrap " << this->name << " doesn't have enough energy to attack or" << std::endl;
+	return;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    std::cout << "ClapTrap " << this->name << " takes " << amount << " points of damage!" << std::endl;
-    this->hitPoints -= amount;
+	if(amount > this->hitPoints){
+		this->hitPoints = 0;
+    	std::cout << "ClapTrap " << this->name << " takes " << amount << " points of damage!" << std::endl;
+
+	}
+	else{
+    	this->hitPoints -= amount;
+    	std::cout << "ClapTrap " << this->name << " takes " << amount << " points of damage!" << std::endl;
+	}
     return;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    std::cout << "ClapTrap " << this->name << " is repaired by " << amount << " points!" << std::endl;
-    this->hitPoints += amount;
-    if(this->hitPoints > 10)
-        this->hitPoints = 10;
-    return;
+	if(this->hitPoints == 0)
+	{
+		std::cout << "ClapTrap " << this->name << " is dead and can't be repaired" << std::endl;
+		return;
+	}
+    if(this->hitPoints < 10 && this->energyPoints > 0)
+    {
+        this->hitPoints += amount;
+        std::cout << "ClapTrap " << this->name << " is repaired by " << this->hitPoints << " points!" << std::endl;
+		this->energyPoints --;
+        return;
+    }
+	if(this->hitPoints >= 10)
+		std::cout << "ClapTrap " << this->name << " doesn't need to be repaired" << std::endl;
+	else
+    	std::cout << "ClapTrap " << this->name << " doesn't have enough energy to be repaired" << std::endl;
+	return;
 }
 
 std::string ClapTrap::getName() const

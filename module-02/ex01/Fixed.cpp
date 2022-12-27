@@ -45,7 +45,6 @@ int		Fixed::toInt(void)	const
 
 Fixed &	Fixed::operator=( Fixed const & rhs )
 {
-		std::cout << "Assignement operator called" << std::endl;
 	if (this != &rhs)
 		this->_fixed_point_value = rhs.getRawBits();
 	return *this;

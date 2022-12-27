@@ -6,6 +6,11 @@
 
 class Fixed
 {
+private:
+
+	int					_fixed_point_value;
+
+	static const int	_number_of_fractional_bits = 8;
 
 public:
 
@@ -22,25 +27,26 @@ public:
 
 	Fixed	&operator=( const Fixed &other);
 	Fixed	operator+( const Fixed &other);
+	Fixed	operator-( const Fixed &other);
 	Fixed	&operator++(void);
+	Fixed	&operator--(void);
 	Fixed	operator++(int);
+	Fixed	operator--(int);
 	Fixed	operator*(const Fixed &other);
 	Fixed	operator/(const Fixed &other);
 
-	bool	operator==( const Fixed &other);
-	bool	operator!=( const Fixed &other);
-	bool	operator<( const Fixed &other);
-	bool	operator<=( const Fixed &other);
-	bool	operator>( const Fixed &other);
-	bool	operator>=( const Fixed &other);
+	bool	operator==( const Fixed &other) const;
+	bool	operator!=( const Fixed &other) const;
+	bool	operator<( const Fixed &other) const;
+	bool	operator<=( const Fixed &other) const;
+	bool	operator>( const Fixed &other) const;
+	bool	operator>=( const Fixed &other) const;
 
-	const static  Fixed	&max(const Fixed &a,const Fixed &b);
-	const static  Fixed	&min(const Fixed &a,const Fixed &b);
-private:
+	static  Fixed	&max(Fixed &a,Fixed &b);
+	static  Fixed	&min(Fixed &a,Fixed &b);
 
-	int					_fixed_point_value;
-
-	static const int	_number_of_fractional_bits = 8;
+	const static Fixed	&max(const Fixed &a, const Fixed &b);
+	const static Fixed	&min(const Fixed &a, const Fixed &b);
 };
 
 std::ostream &operator << (std::ostream &os,Fixed const & dt);
