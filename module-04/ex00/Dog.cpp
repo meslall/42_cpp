@@ -7,11 +7,18 @@ Dog::Dog( void )
 	return;
 }
 
-Dog::Dog( Dog const & src )
+Dog::Dog( Dog const & src ) : Animal(src)
 {
 	std::cout << "Copy constructor for Dog called" << std::endl;
 	*this = src;
 	return;
+}
+
+Dog	&Dog::operator=( Dog const & other )
+{
+	std::cout << "Assignation operator for Dog called" << std::endl;
+	this->type = other.type;
+	return (*this);
 }
 
 Dog::~Dog( void )

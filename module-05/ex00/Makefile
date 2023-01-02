@@ -1,6 +1,6 @@
-NAME = Animal
+NAME = Bureaucrat
 
-SRC = Animal.cpp Cat.cpp Brain.cpp Dog.cpp main.cpp
+SRC = Bureaucrat.cpp  main.cpp
 		
 CC = @c++ -std=c++98
 
@@ -17,14 +17,14 @@ OBJS	= $(SRC:.cpp=.o)
 	
 $(NAME):  $(OBJS)
 			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-			@echo "\033[0;32m®Animal CREATED 🐲\033[0m"
+			@echo "\033[0;32m®Bureaucrat CREATED 🐲\033[0m"
 
 clean:
 			$(RM) $(OBJS)
-			@echo "\033[0;31m®Animal objects DELETED 🗑"
+			@echo "\033[0;31m®Bureaucrat objects DELETED 🗑"
 
 fclean:
 			$(RM) $(NAME) $(OBJS)
-			@echo "\033[0;31m®Animal DELETED 🗑"
+			@echo "\033[0;31m®Bureaucrat DELETED 🗑"
 			
 re:			fclean all 

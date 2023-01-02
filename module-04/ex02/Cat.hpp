@@ -14,7 +14,10 @@ public:
 	Cat( const Cat &src );
 	~Cat( void );
 
+	Cat		&operator=( Cat const & rhs );
+
 	void	makeSound( void ) const ;
+	Brain	*getBrain( void ) const;
 };
 
 #endif

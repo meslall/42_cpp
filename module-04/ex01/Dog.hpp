@@ -14,9 +14,10 @@ public:
 	Dog( const Dog &src );
 	~Dog( void );
 
-	virtual Dog		&operator=( Dog const & rhs );
+	virtual Dog		&operator=( Dog const & other );
 
 	virtual void	makeSound( void ) const ;
+	Brain	*getBrain( void ) const;
 };
 
 #endif

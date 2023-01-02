@@ -22,15 +22,22 @@ Cat::~Cat( void )
 	return;
 }
 
-Cat		&Cat::operator=( Cat const &rhs )
+Cat		&Cat::operator=( Cat const &other )
 {
 	std::cout << "Assignement operator for Cat called" << std::endl;
-	this->type = rhs.getType();
-	*(this->brain) = *(rhs.brain);
+	delete this->brain;
+	this->brain = new Brain();
+	this->type = other.getType();
+	*(this->brain) = *(other.brain);
 	return *this;
 }
 
 void	Cat::makeSound( void ) const
 {
 	std::cout << "Meeeeeeeow" << std::endl;
+}
+
+Brain	*Cat::getBrain( void ) const
+{
+	return this->brain;
 }

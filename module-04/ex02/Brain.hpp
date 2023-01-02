@@ -12,14 +12,13 @@ private:
 
 public:
 
-	Brain( void );
+	Brain();
 	Brain( const Brain &src );
-	~Brain( void );
+	~Brain();
 
 	Brain	&operator=( const Brain &other );
-
-	std::string		ideas[Brain::numberOfIdeas];
-
+	void	setIdea( int index, std::string idea );
+	std::string	getIdea( int index ) const;
 };
 
 #endif

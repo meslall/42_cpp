@@ -2,7 +2,7 @@
 # define ANIMAL_HPP
 
 # include <iostream>
-
+#include "Brain.hpp"
 class Animal
 {
 
@@ -18,10 +18,10 @@ public:
 
 	Animal	&operator=( const Animal &other );
 
-	const std::string	&getType( void ) const ;
-	
 	virtual void	makeSound( void ) const = 0;
-
+	
+	virtual const std::string	&getType( void ) const;
+	virtual Brain	*getBrain( void ) const = 0;
 };
 
 #endif

@@ -12,6 +12,8 @@ public:
 	Cat( const Cat &src );
 	~Cat( void );
 
+	Cat		&operator=( Cat const & other );
+
 	void	makeSound( void ) const ;
 };
 

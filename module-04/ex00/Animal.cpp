@@ -19,10 +19,10 @@ Animal::~Animal( void )
 	return;
 }
 
-Animal &	Animal::operator=( Animal const & rhs )
+Animal &	Animal::operator=( Animal const & other )
 {
 	std::cout << "Assignement operator for Animal called" << std::endl;
-	this->type = rhs.getType();
+	this->type = other.getType();
 	return *this;
 }
 

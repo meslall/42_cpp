@@ -22,15 +22,22 @@ Dog::~Dog( void )
 	return;
 }
 
-Dog		&Dog::operator=( Dog const &rhs )
+Dog		&Dog::operator=( Dog const &other )
 {
-	std::cout << "Assignement operator for Cat called" << std::endl;
-	this->type = rhs.getType();
-	*(this->brain) = *(rhs.brain);
+	std::cout << "Assignement operator for Dog called" << std::endl;
+	delete this->brain;
+	this->brain = new Brain();
+	this->type = other.getType();
+	*(this->brain) = *(other.brain);
 	return *this;
 }
 
 void	Dog::makeSound( void ) const
 {
 	std::cout << "Wouf!" << std::endl;
+}
+
+Brain	*Dog::getBrain( void ) const
+{
+	return this->brain;
 }
