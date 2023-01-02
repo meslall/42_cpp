@@ -1,6 +1,7 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
+#include "Form.hpp"
 # include <iostream>
 # include <stdexcept>
 
@@ -31,7 +32,7 @@ public:
 	void	incrementGrade( int quantity );
 	void	decrementGrade( int quantity );
 
-	void	signForm() const;
+	void	signForm(Form &form) const;
 
 	class GradeTooHighException : public std::exception
 	{

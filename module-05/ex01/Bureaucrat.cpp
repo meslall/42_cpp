@@ -84,6 +84,16 @@ void	Bureaucrat::checkGrade( void ) const
 	}
 }
 
+void	Bureaucrat::signForm(Form &form) const
+{
+	if(!form.getSigned() && this->_grade <= form.getGradeToSign())
+		std::cout << this->_name << " signs the form" << std::endl;
+	else if(!form.getSigned() && this->_grade > form.getGradeToSign())
+		std::cout << this->_name << " cannot sign the form because his grade is too low" << std::endl;
+	else
+		std::cout << this->_name << " cannot sign the form because it is already signed" << std::endl;
+}
+
 std::ostream &	operator<<( std::ostream & ostr, Bureaucrat const & instance)
 {
 	ostr << instance.getName() << ", Bureaucrat grade " << instance.getGrade();
