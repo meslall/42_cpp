@@ -1,25 +1,80 @@
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-int main()
+int	main(void)
 {
-	Bureaucrat	*bur = new Bureaucrat("Bob1", 1);
-	Bureaucrat	*bur2 = new Bureaucrat("Bob2", 150);
+	// try
+	// {
+	// 	Form	f("EB110", 0, 1);
+	// }
+	// catch (std::exception &e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
+	// std::cout << std::endl;
 
-	Bureaucrat bur3 = *bur2;
 
-	std::cout << *bur << std::endl;
-	std::cout << *bur2 << std::endl;
-	std::cout << bur3 << std::endl;
+	// try
+	// {
+	// 	Form	f("EB111", 1, 0);
+	// }
+	// catch (std::exception &e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
+	// std::cout << std::endl;
 
-	bur->incrementGrade(1);
-	bur2->decrementGrade(1);
 
-	std::cout << *bur << std::endl;
-	std::cout << *bur2 << std::endl;
+	// try
+	// {
+	// 	Form	f("EB112", 1, 151);
+	// }
+	// catch (std::exception &e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
+	// std::cout << std::endl;
 
-	delete bur;
-	delete bur2;
 
-	return (0);
-	
+	// try
+	// {
+	// 	Form	f("EB113", 151, 1);
+	// }
+	// catch (std::exception &e)
+	// {
+	// 	std::cout << e.what() << std::endl;
+	// }
+	// std::cout << std::endl;
+
+
+	try
+	{
+		Bureaucrat	john = Bureaucrat("John", 150);
+		Form		f("EB114", 0, 150);
+		john.decrementGrade(5);
+		std::cout << f << std::endl;
+		john.signForm(f);
+		std::cout << f << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+
+
+	try
+	{
+		Bureaucrat	joe = Bureaucrat("Joe", 10);
+		Form		f("EB115", 1, 1);
+
+		std::cout << f << std::endl;
+		joe.signForm(f);
+		std::cout << f << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	return 0;
 }

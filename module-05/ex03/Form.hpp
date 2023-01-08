@@ -21,7 +21,7 @@ public:
 
 	Form( const std::string &name, int gradeToSign, int gradeToExecute );
 	Form( const Form &src );
-	~Form( void );
+	virtual ~Form( void );
 
 	Form	&operator=( const Form &other );
 
@@ -30,6 +30,7 @@ public:
 	int					getGradeToSign( void ) const;
 	int					getGradeToExecute( void ) const;
 
+	virtual	void	execute(Bureaucrat const & executor) const = 0;
 	bool	beSigned(const Bureaucrat& bureaucrat );
 	void	checkGrades( void ) const;
 
@@ -50,6 +51,14 @@ public:
 	}
 };
 
+class CantExecuteForm : public std::exception
+{
+public:
+	virtual const char* what() const throw()
+	{
+		return ("The form cannot be executed, either because it wasn't signed, or because the executor has a rank too low");
+	}
+};
 };
 
 std::ostream	&operator<<( std::ostream &o, const Form &instance);

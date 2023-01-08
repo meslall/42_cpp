@@ -11,10 +11,12 @@ Bureaucrat::Bureaucrat( void ) : _name(""), _grade(Bureaucrat::lowestGrade)
 Bureaucrat::Bureaucrat( const std::string &name, int grade ) : _name(name), _grade(grade)
 {
 	this->checkGrade();
+	if(!Bureaucrat::check){
 	if(this->_grade < Bureaucrat::highestGrade)
 		this->_grade = Bureaucrat::highestGrade;
 	else if(this->_grade > Bureaucrat::lowestGrade)
 		this->_grade = Bureaucrat::lowestGrade;
+	}
 	std::cout << "Constructor for Bureaucrat called" << std::endl;
 	return;
 }
@@ -70,18 +72,15 @@ void	Bureaucrat::decrementGrade( int quantity )
 
 void	Bureaucrat::checkGrade( void ) const
 {
-	try
-	{
-		if (this->_grade < this->highestGrade)
+		if (this->_grade < this->highestGrade){
+			Bureaucrat::check = false;
 			throw Bureaucrat::GradeTooHighException();
-		else if (this->_grade > this->lowestGrade)
+		}
+		else if (this->_grade > this->lowestGrade){
+			Bureaucrat::check = false;
 			throw Bureaucrat::GradeTooLowException();
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-		Bureaucrat::check = false;
-	}
+		}
+		Bureaucrat::check = true;
 }
 
 std::ostream &	operator<<( std::ostream & ostr, Bureaucrat const & instance)
